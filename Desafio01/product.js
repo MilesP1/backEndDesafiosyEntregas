@@ -1,27 +1,28 @@
-class TicketManager{    constructor(){
+class TicketManager{constructor(){
      this.products = [];
      this.id = 1;
  }
-     addProduct(title, description, price, url, code, stock){
-         if ( title && description && price && url && code && stock){
-             const verificationCode = this.products.some (product => product.code === code);
-         if (verificationCode){
-                 console.error("Codigo Repetido");
-             }else{
-                 let id = this.id++;
-                 const newProduct = {id, title, description, price, url, code, stock};
-                 this.products.push(newProduct);
-                 console.log("Producto agregado correctamente:", newProduct);
-             }
-         }else {
-             console.error("Por favor completar todos los campos");        
-         }
-     };
 
-     getProduct(){
+ addProduct(title, description, price, thumbnail, code, stock){
+        if ( title && description && price && thumbnail && code && stock){
+            const verificationCode = this.products.some (product => product.code === code);
+        if (verificationCode){
+                console.error("Codigo Repetido");
+            }else{
+                let id = this.id++;
+                const newProduct = {id, title, description, price, thumbnail, code, stock};
+                this.products.push(newProduct);
+                console.log("Producto agregado correctamente:", newProduct);
+            }
+        }else {
+            console.error("Por favor completar todos los campos");        
+        }
+    };
+
+     getProducs(){
          return this.products;
      }
-     getProductByID(id){
+     getProductsByD(id){
          const productID = this.products.find(product => product.id === id);
          if (!productID){
              return console.error("Not Found")
@@ -32,12 +33,12 @@ class TicketManager{    constructor(){
 
 
  const TicketManager = new TicketManager()
- TicketManager.addProduct("Fideos", "con tuco", 20, "url", 123, 25);
- TicketManager.addProduct("Ravioles", "de Pollo", 30, "url", 124, 20);
- TicketManager.addProduct("Ñoquis", "de papa", 40, "url", 125, 50);
- console.log ("Todos los productos:", TicketManager.getProduct());
- TicketManager.getProductByID(1);
- TicketManager.getProductByID(2);
- TicketManager.getProductByID(3);
- TicketManager.getProductByID(4);
+ TicketManager.addProduct("Fideos", "con tuco", 20, "thumbnail", 123, 25);
+ TicketManager.addProduct("Ravioles", "de Pollo", 30, "thumbnail", 124, 20);
+ TicketManager.addProduct("Ñoquis", "de papa", 40, "thumbnail", 125, 50);
+ console.log ("Todos los productos:", TicketManager.getProducs());
+ TicketManager.getProductsByD(1);
+ TicketManager.getProductsByD(2);
+ TicketManager.getProductsByD(3);
+ TicketManager.getProductsByD(4);
  console.log(TicketManager);
